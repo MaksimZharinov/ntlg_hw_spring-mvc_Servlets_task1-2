@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <response-character-encoding>UTF-8</response-character-encoding>
+    <absolute-ordering/>
     <!-- определение servlet'а -->
     <servlet>
         <servlet-name>main</servlet-name>
@@ -11,10 +12,21 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>simple-main</servlet-name>
+        <servlet-class>ru.netology.servlet.SimpleServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
     <!-- mapping - привязка к определённому URL-->
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>simple-main</servlet-name>
+        <url-pattern>/simple/*</url-pattern>
     </servlet-mapping>
 </web-app>
 
