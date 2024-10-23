@@ -1,6 +1,6 @@
 package ru.netology.repository;
 
-import io.reactivex.rxjava3.annotations.NonNull;
+import reactor.util.annotation.NonNull;
 import ru.netology.exception.NotFoundException;
 import ru.netology.model.Post;
 
