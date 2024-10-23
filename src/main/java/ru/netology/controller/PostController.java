@@ -1,6 +1,7 @@
 package ru.netology.controller;
 
 import com.google.gson.Gson;
+//import jakarta.servlet.http.HttpServletResponse;
 import ru.netology.model.Post;
 import ru.netology.service.PostService;
 
@@ -8,9 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Reader;
 
+import static javax.servlet.http.HttpServletResponse.SC_OK;
+
 public class PostController {
     public static final String APPLICATION_JSON = "application/json";
-    private final String OK = "\"200 OK\"";
     private final PostService service;
     private final Gson gson = new Gson();
 
@@ -38,7 +40,7 @@ public class PostController {
     public void removeById(long id, HttpServletResponse response) throws IOException {
         // TODO: deserialize request & serialize response
         service.removeById(id);
-        handleResponse(response, OK);
+        handleResponse(response, SC_OK);
     }
 
     private void handleResponse(HttpServletResponse response, Object data) throws IOException {

@@ -1,5 +1,6 @@
 package ru.netology.repository;
 
+import reactor.util.annotation.NonNull;
 import ru.netology.exception.NotFoundException;
 import ru.netology.model.Post;
 
@@ -13,6 +14,7 @@ public class PostRepository {
     private final ConcurrentHashMap<Long, Post> REPO = new ConcurrentHashMap<>();
     private long countPosts = 0L;
 
+    @NonNull
     public List<Post> all() {
         if (REPO.isEmpty()) {
             return Collections.emptyList();
@@ -20,6 +22,7 @@ public class PostRepository {
         return (List<Post>) REPO.values();
     }
 
+    @NonNull
     public Optional<Post> getById(long id) {
         if (REPO.isEmpty()) {
             return Optional.empty();
