@@ -1,6 +1,6 @@
 package ru.netology.repository;
 
-import reactor.util.annotation.NonNull;
+import org.springframework.stereotype.Repository;
 import ru.netology.exception.NotFoundException;
 import ru.netology.model.Post;
 
@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Repository
 public class PostRepository {
 
     private final ConcurrentHashMap<Long, Post> REPO = new ConcurrentHashMap<>();
     private long countPosts = 0L;
 
-    @NonNull
     public List<Post> all() {
         if (REPO.isEmpty()) {
             return Collections.emptyList();
@@ -22,7 +22,6 @@ public class PostRepository {
         return (List<Post>) REPO.values();
     }
 
-    @NonNull
     public Optional<Post> getById(long id) {
         if (REPO.isEmpty()) {
             return Optional.empty();
